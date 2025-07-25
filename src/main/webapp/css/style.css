@@ -1,0 +1,141 @@
+/* --- 全局与基础样式 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'M PLUS Rounded 1c', sans-serif; /* 使用圆润的日系字体 */
+    overflow: hidden; /* 隐藏滚动条，让樱花特效铺满全屏 */
+}
+
+body {
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* 添加一层柔和的渐变蒙版，让背景不那么刺眼 */
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255, 192, 203, 0.2), rgba(135, 206, 235, 0.2));
+    z-index: 1;
+}
+
+/* --- 主内容容器样式 --- */
+.main-container {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    width: 90%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明背景，毛玻璃效果 */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px); /* 毛玻璃效果的关键 */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+h1 {
+    color: #ff69b4; /* 亮粉色 */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.subtitle {
+    color: #6a6a6a;
+    margin-bottom: 30px;
+}
+
+/* --- 文件上传表单美化 --- */
+#uploadForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* 元素之间的间距 */
+}
+
+/* 隐藏原始的文件输入框 */
+#fileInput {
+    display: none;
+}
+
+/* 自定义上传按钮 */
+.upload-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff8cba; /* 柔和的粉色 */
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.upload-button:hover {
+    background-color: #ff69b4;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+}
+
+/* 文件名显示区域 */
+.file-name-display {
+    color: #888;
+    font-style: italic;
+    font-size: 14px;
+    height: 20px;
+}
+
+/* 提交按钮 */
+.submit-button {
+    padding: 12px 40px;
+    background-color: #4CAF50; /* 绿色，表示确认操作 */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+
+/* --- 樱花飘落动画 --- */
+.petal {
+    position: fixed;
+    top: -10px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C65 10, 80 30, 80 50 C80 70, 65 90, 50 100 C35 90, 20 70, 20 50 C20 30, 35 10, 50 0 Z" fill="%23ffc0cb" /></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    z-index: 3; /* 确保在内容之上 */
+    pointer-events: none; /* 让花瓣不可点击 */
+    animation: fall linear;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
