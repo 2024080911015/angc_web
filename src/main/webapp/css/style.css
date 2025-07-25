@@ -139,3 +139,90 @@ h1 {
         opacity: 0;
     }
 }
+/* --- (保留所有原有样式) --- */
+
+/* ... 你原来的所有CSS代码 ... */
+
+
+/* --- 新增：文件列表样式 --- */
+.file-list-container {
+    margin-top: 35px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 105, 180, 0.2); /* 粉色分割线 */
+    padding-top: 25px;
+}
+
+.file-list-container h2 {
+    color: #ff69b4; /* 亮粉色 */
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.file-list {
+    list-style: none; /* 移除默认的列表点 */
+    padding: 0;
+    max-height: 200px; /* 如果文件太多，可以出现滚动条 */
+    overflow-y: auto; /* 自动显示滚动条 */
+    text-align: left; /* 列表内容左对齐 */
+}
+
+/* 美化滚动条 (可选，但在深色背景下效果更好) */
+.file-list::-webkit-scrollbar {
+    width: 8px;
+}
+.file-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.file-list::-webkit-scrollbar-thumb {
+    background: #ffb6c1; /* 淡粉色 */
+    border-radius: 10px;
+}
+.file-list::-webkit-scrollbar-thumb:hover {
+    background: #ff8cba;
+}
+
+
+.file-item {
+    display: flex;
+    justify-content: space-between; /* 文件名和按钮两端对齐 */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.02);
+}
+
+.file-name {
+    color: #555;
+    font-size: 15px;
+    /* 防止文件名过长时溢出 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 15px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 6px 15px;
+    background-color: #87ceeb; /* 天蓝色 */
+    color: white;
+    text-decoration: none; /* 移除链接下划线 */
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* 防止按钮被挤压变形 */
+}
+.download-button:hover {
+    background-color: #64b5f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(135, 206, 235, 0.4);
+}
