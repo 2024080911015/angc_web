@@ -1,255 +1,101 @@
 /* --- 全局与基础样式 --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    height: 100%;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    overflow: hidden;
-}
-
-body {
-    background: url('../images/bg.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-attachment: fixed;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to top, rgba(255, 192, 203, 0.2), rgba(135, 206, 235, 0.2));
-    z-index: 1;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, html { height: 100%; font-family: 'M PLUS Rounded 1c', sans-serif; overflow: hidden; }
+body { background: url('../images/bg.jpg') no-repeat center center/cover; display: flex; justify-content: center; align-items: center; position: relative; background-attachment: fixed; }
+body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(255, 192, 203, 0.2), rgba(135, 206, 235, 0.2)); z-index: 1; }
 
 /* --- 主内容容器样式 --- */
 .main-container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px; /* 适当加宽以容纳画廊 */
-    width: 90%;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    max-height: 90vh; /* 限制最大高度 */
-    display: flex;
-    flex-direction: column;
+    position: relative; z-index: 2; max-width: 900px; width: 90%;
+    padding: 40px; background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4); max-height: 90vh;
+    display: flex; flex-direction: column;
 }
-
-h1 {
-    color: #ff69b4;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-}
-
-.subtitle {
-    color: #6a6a6a;
-    margin-bottom: 30px;
-}
+h1 { color: #ff69b4; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); }
+.subtitle { color: #6a6a6a; margin-bottom: 30px; }
 
 /* --- 文件上传表单美化 --- */
-#uploadForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
+#uploadForm { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 #fileInput { display: none; }
-.upload-button {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #ff8cba;
-    color: white;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 700;
-}
-.upload-button:hover {
-    background-color: #ff69b4;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
-}
+.upload-button { display: inline-block; padding: 12px 30px; background-color: #ff8cba; color: white; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 700; }
+.upload-button:hover { background-color: #ff69b4; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3); }
 .file-name-display { color: #888; font-style: italic; font-size: 14px; height: 20px; }
-.submit-button {
-    padding: 12px 40px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-.submit-button:hover {
-    background-color: #45a049;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
-}
-
+.submit-button { padding: 12px 40px; background-color: #4CAF50; color: white; border: none; border-radius: 50px; cursor: pointer; font-family: inherit; font-weight: 700; transition: all 0.3s ease; }
+.submit-button:hover { background-color: #45a049; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3); }
 
 /* --- 樱花飘落动画 --- */
-.petal {
-    position: fixed;
-    top: -20px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C65 10, 80 30, 80 50 C80 70, 65 90, 50 100 C35 90, 20 70, 20 50 C20 30, 35 10, 50 0 Z" fill="%23ffc0cb" /></svg>');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
-    z-index: 3;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-}
+.petal { position: fixed; top: -20px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 C65 10, 80 30, 80 50 C80 70, 65 90, 50 100 C35 90, 20 70, 20 50 C20 30, 35 10, 50 0 Z" fill="%23ffc0cb" /></svg>'); background-size: contain; background-repeat: no-repeat; width: 20px; height: 20px; z-index: 3; pointer-events: none; animation-name: fall; animation-timing-function: linear; }
+@keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
 
-@keyframes fall {
-    to {
-        transform: translateY(105vh) rotate(360deg);
-        opacity: 0;
-    }
-}
+/* ====================================================================== */
+/* ==================== 画廊布局样式 (最终修正版) ======================= */
+/* ====================================================================== */
 
-/* --- 画廊布局样式 --- */
 .file-list-container {
     margin-top: 35px;
     width: 100%;
     border-top: 1px solid rgba(255, 105, 180, 0.2);
     padding-top: 25px;
-    overflow: hidden; /* 确保画廊内容在容器内 */
-    flex-grow: 1;
+    flex-grow: 1; /* 让此容器占据所有剩余空间 */
+    min-height: 0; /* 允许此容器收缩，解决flex布局陷阱 */
+
+    /* 新增：让它自己也成为flex容器，来管理它的孩子(h2和preview-grid) */
+    display: flex;
+    flex-direction: column;
 }
 
 .file-list-container h2 {
     color: #ff69b4;
     font-size: 1.2em;
     margin-bottom: 20px;
+    /* h2的高度由内容决定，它是一个固定的flex项目 */
+    flex-shrink: 0;
 }
 
 .preview-grid {
+    /* 新增：让网格占据父容器内所有剩余的空间 */
+    flex-grow: 1;
+    /* 移除：不再需要height: 100%，高度由flexbox自动计算 */
+    /* height: 100%; */
+
+    /* 保持：当网格内容超出其被分配的空间时，自身出现滚动条 */
+    overflow-y: auto;
+
+    /* 其他样式保持不变 */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
-    height: 100%; /* 占满父容器高度 */
-    overflow-y: auto;
     padding: 10px;
 }
 
+/* ==================== (以下代码无需修改) ======================= */
 .preview-grid::-webkit-scrollbar { width: 8px; }
 .preview-grid::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.5); border-radius: 10px; }
 .preview-grid::-webkit-scrollbar-thumb { background: #ffb6c1; border-radius: 10px; }
-
-.preview-card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    aspect-ratio: 1 / 1;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
+.preview-card { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);height: 190px; background-color: #f0f0f0; cursor: pointer; transition: transform 0.3s ease; }
 .preview-card:hover { transform: scale(1.05); }
 .preview-media { width: 100%; height: 100%; object-fit: cover; }
-
-.video-overlay {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px; color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    opacity: 0.7; pointer-events: none;
-    transition: opacity 0.3s ease;
-}
+.video-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 40px; color: white; text-shadow: 0 0 10px rgba(0,0,0,0.7); opacity: 0.7; pointer-events: none; transition: opacity 0.3s ease; }
 .preview-card:hover .video-overlay { opacity: 1; }
-
-.preview-placeholder {
-    width: 100%; height: 100%; display: flex;
-    flex-direction: column; justify-content: center;
-    align-items: center; color: #888; background: #e9e9e9;
-}
+.preview-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #888; background: #e9e9e9; }
 .placeholder-icon { font-size: 48px; }
 .placeholder-text { margin-top: 10px; font-weight: bold; }
-
-.card-overlay {
-    position: absolute; bottom: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
-    color: white; display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 15px;
-    opacity: 0; transition: opacity 0.3s ease;
-}
+.card-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); color: white; display: flex; flex-direction: column; justify-content: flex-end; padding: 15px; opacity: 0; transition: opacity 0.3s ease; }
 .preview-card:hover .card-overlay { opacity: 1; }
-
-.card-filename {
-    font-size: 14px; font-weight: bold;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
+.card-filename { font-size: 14px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-actions { display: flex; gap: 10px; margin-top: 8px; }
-.card-action-btn {
-    width: 30px; height: 30px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    border-radius: 50%; display: flex;
-    justify-content: center; align-items: center;
-    color: white; text-decoration: none;
-    font-size: 16px; transition: background 0.3s;
-}
+.card-action-btn { width: 30px; height: 30px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; text-decoration: none; font-size: 16px; transition: background 0.3s; }
 .card-action-btn:hover { background: rgba(255, 255, 255, 0.4); }
 
 /* --- 预览模态框样式 --- */
-.modal-overlay {
-    position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none; justify-content: center;
-    align-items: center; z-index: 1000; padding: 20px;
-}
-.modal-content {
-    position: relative; background-color: #fff;
-    padding: 20px; border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    max-width: 90vw; max-height: 90vh; display: flex;
-}
-.modal-close {
-    position: absolute; top: -15px; right: -15px;
-    width: 35px; height: 35px;
-    background-color: white; color: #333;
-    border-radius: 50%; font-size: 28px;
-    font-weight: bold; line-height: 32px;
-    text-align: center; cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-.modal-close:hover {
-    transform: rotate(90deg);
-    background-color: #ff69b4; color: white;
-}
-#preview-content-area {
-    display: flex; justify-content: center;
-    align-items: center; width: 100%; height: 100%;
-}
-#preview-content-area img, #preview-content-area video, #preview-content-area embed {
-    max-width: 100%; max-height: calc(90vh - 40px);
-    border-radius: 8px; display: block;
-}
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
+.modal-content { position: relative; background-color: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); max-width: 90vw; max-height: 90vh; display: flex; }
+.modal-close { position: absolute; top: -15px; right: -15px; width: 35px; height: 35px; background-color: white; color: #333; border-radius: 50%; font-size: 28px; font-weight: bold; line-height: 32px; text-align: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+.modal-close:hover { transform: rotate(90deg); background-color: #ff69b4; color: white; }
+#preview-content-area { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
+#preview-content-area img, #preview-content-area video, #preview-content-area embed { max-width: 100%; max-height: calc(90vh - 40px); border-radius: 8px; display: block; }
 #preview-content-area embed { width: 80vw; height: calc(90vh - 40px); }
-.unsupported-preview {
-    color: #555; text-align: center; padding: 40px;
-}
+.unsupported-preview { color: #555; text-align: center; padding: 40px; }
 .unsupported-preview h3 { color: #ff69b4; margin-bottom: 10px; }

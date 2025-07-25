@@ -72,8 +72,7 @@
 <div id="preview-modal" class="modal-overlay">
     <span class="modal-close">&times;</span>
     <div class="modal-content">
-        <div id="preview-content-area">
-        </div>
+        <div id="preview-content-area"></div>
     </div>
 </div>
 
