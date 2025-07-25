@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%-- 引入JSTL核心标签库，这是使用 c:forEach 的前提 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -25,28 +24,58 @@
         <button type="submit" class="submit-button">开始上传</button>
     </form>
 
-    <%-- ==================== 新增的文件列表展示区 ==================== --%>
-    <%-- 使用 c:if 判断 fileList 是否不为空且有内容 --%>
     <c:if test="${not empty fileList}">
         <div class="file-list-container">
-            <h2>已上传的文件</h2>
-            <ul class="file-list">
-                    <%-- 使用 c:forEach 遍历从Servlet传来的 fileList --%>
+            <h2>文件预览画廊</h2>
+            <div class="preview-grid">
                 <c:forEach var="file" items="${fileList}">
-                    <li class="file-item">
-                        <span class="file-name">${file.name}</span>
-                            <%-- 下载链接，指向我们新创建的 DownloadServlet --%>
-                        <a href="download?file=${file.name}" class="download-button">下载</a>
-                    </li>
+                    <div class="preview-card">
+                        <c:set var="filename" value="${file.name.toLowerCase()}" />
+                        <c:set var="fileUrl" value="download?file=${file.name}&disposition=inline" />
+
+                        <c:choose>
+                            <c:when test="${filename.endsWith('.jpg') or filename.endsWith('.jpeg') or filename.endsWith('.png') or filename.endsWith('.gif') or filename.endsWith('.webp')}">
+                                <img src="${fileUrl}" alt="${file.name}" class="preview-media">
+                            </c:when>
+                            <c:when test="${filename.endsWith('.mp4') or filename.endsWith('.webm') or filename.endsWith('.ogg')}">
+                                <video src="${fileUrl}" muted loop class="preview-media"></video>
+                                <div class="video-overlay">▶</div>
+                            </c:when>
+                            <c:when test="${filename.endsWith('.pdf')}">
+                                <div class="preview-placeholder">
+                                    <span class="placeholder-icon">📄</span>
+                                    <span class="placeholder-text">PDF 文件</span>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="preview-placeholder">
+                                    <span class="placeholder-icon">📁</span>
+                                    <span class="placeholder-text">无法预览</span>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <div class="card-overlay">
+                            <p class="card-filename">${file.name}</p>
+                            <div class="card-actions">
+                                <a href="download?file=${file.name}" class="card-action-btn" title="下载">📥</a>
+                                <span class="card-action-btn preview-trigger" title="放大预览" data-filename="${file.name}">🔍</span>
+                            </div>
+                        </div>
+                    </div>
                 </c:forEach>
-            </ul>
+            </div>
         </div>
     </c:if>
-    <%-- ==================== 文件列表展示区结束 ==================== --%>
-
 </div>
 
-<div id="sakura-container"></div>
+<div id="preview-modal" class="modal-overlay">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <div id="preview-content-area">
+        </div>
+    </div>
+</div>
 
 <script src="js/sakura.js"></script>
 <script src="js/main.js"></script>
